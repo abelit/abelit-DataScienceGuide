@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+  </head>
+  <body>
+    <button id="startws" class="btn btn-primary btn-lg col-xs-3 col-xs-offset-3">
+      start websocket
+    </button>
+    <button id="endws" class="btn btn-primary btn-lg col-xs-3 col-xs-offset-3">
+      end websocket
+    </button>
+    <script type="text/javascript" src="./socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        var socket = io.connect("http://127.0.0.1:5000/echo");
+        $("#startws").click(function (event) {
+          socket.emit("gotit", "gotit from frontend");
+        });
+
+        socket.on("gotres", function (data) {
+          console.log(data);
+        });
+
+        // $("#endws").click(function (event) {
+        //   socket.emit("disconnect");
+        // });
+        $("#endws").click(function (event) {
+          socket.disconnect();
+        });
+
+      });
+    </script>
+  </body>
+</html>
