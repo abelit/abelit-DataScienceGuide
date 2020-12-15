@@ -1,5 +1,6 @@
 # 1. VSCode Plugins
 ```
+Visual Studio IntelliCode
 Ansible
 Beautify
 Docker
